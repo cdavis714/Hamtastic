@@ -39,10 +39,10 @@
   box-shadow: 2px 2px 5px #666666;
   font-family: Arial;
   color: #403c40;
-  font-size: 14px;
+  font-size: 18px;
   /*padding: 11px 30px 11px 30px;*/
-  width: 100px;
-  height: 30px;
+  width: 250px;
+  height: 35px;
   border: solid #a1a1a1 .1px;
   text-decoration: none;
 }
@@ -50,7 +50,6 @@
   background: #bbd5e6;
   text-decoration: none;
 }
-
 
 td
 {
@@ -88,7 +87,29 @@ input {
 	-ms-transition: box-shadow .5s ease;
 	transition: box-shadow .5s ease;
 }
-input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+input:focus, input2:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+
+
+.input2 { 
+	width: 50%; 
+	margin-bottom: 10px; 
+	background: rgba(255,255,255, 0.3);
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	font-family: Arial;
+	color: #000;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(0,0,0,0.2);
+	-webkit-transition: box-shadow .5s ease;
+	-moz-transition: box-shadow .5s ease;
+	-o-transition: box-shadow .5s ease;
+	-ms-transition: box-shadow .5s ease;
+	transition: box-shadow .5s ease;
+}
 
 /*CHECKBOX*/
 
@@ -137,15 +158,25 @@ input[type="checkbox"]:checked + label:before {
 
 /*CHECKBOX ENDS*/
 
-.a1:link {
-    text-decoration: none;
-    color: inherit;
-}
-.a1:visited {
-    text-decoration: none;
-    color: inherit;
+
+
+ .a3 img { display:none; }
+ .a3:hover img { display:block; }
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
 
+
+
+.a1:link, .a3:link {
+    text-decoration: none;
+    color: inherit;
+}
+.a1:visited, a3:link {
+    text-decoration: none;
+    color: inherit;
+}
 
 </style>
 
@@ -162,23 +193,24 @@ input[type="checkbox"]:checked + label:before {
 <img src="hamtasticlogo.jpg" alt="Logo">
 </td>
 <td>
-	<br><br><br><br><br><br><br><br>
+	<br><br><br>
 <div class="login">
-	<h1>Sign Up</h1>
+	<h1>Payment Information</h1>
     <form method="post">
+    	<input type="text" name="nameOnCard" placeholder="Name On Card" required="required" />
+    	<input type="text" name="cardNumber" placeholder="Card Number" required="required" />
+    	<input type="text" name="expirationDate" placeholder="Expiry Date (MM/YY)" required="required" />
+    	<input class="input2" type="text" name="cvv" placeholder="CVV" required="required" />
+    	<a class ="a3" href="#">What is this?<img src="cvvWhatsThis.jpg" /></a>
+    	<input type="text" name="address1" placeholder="Address 1" required="required" />
+    	<input type="text" name="address2" placeholder="Address 2" required="required" />
+    	<input type="text" name="city" placeholder="City" required="required" />
+    	<input type="text" name="state" placeholder="State" required="required" />
+    	<input type="text" name="zipCode" placeholder="Postal Code" required="required" />
+    	<input type="tel" name="telephone" placeholder="Contact Phone Number" required="required" />
     	<input type="text" name="email" placeholder="Email" required="required" />
-    	<input type="text" name="confEmail" placeholder="Confirm Email" required="required" />
-    	<input type="password" name="password" placeholder="Password" required="required" />
-    	<input type="password" name="confPassword" placeholder="Confirm Password" required="required" />
-    	<input type="text" name="school" placeholder="School" required="required" /><br><br>
-    	<center><div class="boxes">
-  			<input type="checkbox" id="box-1">
-  			<label for="box-1">I agree to the <a href="termsAndConditions.html">terms and conditions</a></label>
-  		</div>
-  	</center>
-  		<br><br>
-        <center><button class="btn1"><a class="a1" href="hamSignUp1.html">Back</a></button>&nbsp&nbsp&nbsp
-        <button class="btn1"><a class="a1" href="needsFixing.html">Continue</a></button>
+			<br><br>
+        <center><button class="btn1"><a class="a1" href="hamSignUp1.html">Submit</a></button>&nbsp&nbsp&nbsp
 			</center>
     </form>
 

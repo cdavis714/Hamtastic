@@ -67,6 +67,7 @@
   border: solid #a1a1a1 .1px;
   text-decoration: none;
 }
+
 .btn:hover, .btn1:hover, .btn2:hover {
   background: #bbd5e6;
   text-decoration: none;
@@ -87,6 +88,7 @@ td
 	width:300px;
 	height:300px;
 }
+
 .login h1 { color: #708090; font-family:Arial; letter-spacing:1px; text-align:center; }
 
 input { 
@@ -111,6 +113,16 @@ input {
 }
 input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
 
+a:link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+a:visited {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
 
 </style>
 
@@ -132,11 +144,11 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 	<h1>Sign Up</h1>
     <form method="post">
 
-        <center><button class="btn1">Subscribe Yourself</button><br><br>
-        <button class="btn1">Subscribe Other</button><br><br>
-        <button class="btn1">Request Account</button><br><br>
-        <button class="btn2">Back</button>&nbsp&nbsp&nbsp&nbsp
-				<button class="btn2">Help</button><br>
+        <center><button class="btn1"><a href="signUpYourself.html">Subscribe Yourself</a></button><br><br>
+        <button class="btn1"><a href="signUpOther.html">Subscribe Other</a></button><br><br>
+        <button class="btn1"><a href="requestAccount.html">Request Account</a></button><br><br>
+        <button class="btn2"><a href="hamhomepage.html">Back</a></button>&nbsp&nbsp&nbsp&nbsp
+				<button class="btn2"><a href="needsFixing.html">Help</a></button><br>
 			</center>
     </form>
 </div>
