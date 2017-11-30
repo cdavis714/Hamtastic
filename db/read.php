@@ -2,7 +2,7 @@
 
 /**
  * Function to query information based on 
- * a parameter: in this case, location.
+ * a parameter: in this case, School.
  *
  */
 
@@ -17,13 +17,13 @@ if (isset($_POST['submit']))
 		$connection = new PDO($dsn, $username, $password, $options);
 
 		$sql = "SELECT * 
-						FROM users
-						WHERE location = :location";
+						FROM Customer
+						WHERE School_name = :School_name";
 
-		$location = $_POST['location'];
+		$school = $_POST['School_name'];
 
 		$statement = $connection->prepare($sql);
-		$statement->bindParam(':location', $location, PDO::PARAM_STR);
+		$statement->bindParam(':School_name', $school, PDO::PARAM_STR);
 		$statement->execute();
 
 		$result = $statement->fetchAll();
@@ -52,7 +52,7 @@ if (isset($_POST['submit']))
 					<th>Last Name</th>
 					<th>Email Address</th>
 					<th>Age</th>
-					<th>Location</th>
+					<th>School Name</th>
 					<th>Date</th>
 				</tr>
 			</thead>
@@ -66,7 +66,7 @@ if (isset($_POST['submit']))
 				<td><?php echo escape($row["lastname"]); ?></td>
 				<td><?php echo escape($row["email"]); ?></td>
 				<td><?php echo escape($row["age"]); ?></td>
-				<td><?php echo escape($row["location"]); ?></td>
+				<td><?php echo escape($row["School_name"]); ?></td>
 				<td><?php echo escape($row["date"]); ?> </td>
 			</tr>
 		<?php 
@@ -77,16 +77,16 @@ if (isset($_POST['submit']))
 	} 
 	else 
 	{ ?>
-		<blockquote>No results found for <?php echo escape($_POST['location']); ?>.</blockquote>
+		<blockquote>No results found for <?php echo escape($_POST['School_name']); ?>.</blockquote>
 	<?php
 	} 
 }?> 
 
-<h2>Find user based on location</h2>
+<h2>Find user based on School</h2>
 
 <form method="post">
-	<label for="location">Location</label>
-	<input type="text" id="location" name="location">
+	<label for="School_name">School</label>
+	<input type="text" id="School_name" name="School">
 	<input type="submit" name="submit" value="View Results">
 </form>
 
