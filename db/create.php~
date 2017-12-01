@@ -6,7 +6,8 @@
  *
  */
 
-
+#Please add more comments!
+#Besides that! Looks great!
 if (isset($_POST['submit']))
 {
 	

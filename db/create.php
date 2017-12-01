@@ -6,7 +6,8 @@
  *
  */
 
-
+#Please comment the code throughout the entire page
+#Besides that, looks good!
 if (isset($_POST['submit']))
 {
 	
