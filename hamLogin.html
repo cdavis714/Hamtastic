@@ -112,16 +112,17 @@ a:visited {
 	<center><table>
 	<tr>
 	<td>
-<img src="hamtasticlogo.jpg" alt="Logo">
+<img src="images/hamtasticlogo.jpg" alt="Logo">
 </td>
 <td>
 	<br><br><br><br><br><br><br><br>
 <div class="login">
 	<h1>Log In</h1>
-    <form method="post">
-    	<input type="text" name="u" placeholder="Username" required="required" />
-        <input type="password" name="p" placeholder="Password" required="required" /><br><br>
-        <center><button class="btn"><a href="hamLogin.html">Sign In</a></button></center><br>
+    <form method="POST" action="include/connectivity.php">
+    	<input type="text" name="Email" placeholder="Email" required="required" />
+        <input type="password" name="Password" placeholder="Password" required="required" /><br><br>
+        <input id="button" type="submit" name="submit" value="Log-In">
+<!--	<center><button class="btn"><a href="hamLogin.html">Sign In</a></button></center><br> -->
         <center><button class="btn1"><a href="forgotPassword.html">Forgot<br>Password?</a></button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 			<button class="btn1"><a href="forgotUsername.html">Forgot<br>Email?</a></button><br><br>
 			<button class="btn1"><a href="hamhomepage.html">Back</a></button><br>
