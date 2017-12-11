@@ -293,7 +293,12 @@ document.getElementById("files").onchange = function () {
 <td>
 	<br><br>
 <div class="login">
-	<textarea placeholder="Write your post here...." rows="30" cols="60"></textarea> 
+	<form method="POST" action="include/posting.php" id="postingform">
+		Email: <input type="text" name="Email">
+		<input type="submit">
+ 	</form>
+	<br>
+	<textarea placeholder="Write your post here...." rows="30" cols="60" name="Content" form="postingform"></textarea> 
 			</textarea>
 </td>
 </tr>
