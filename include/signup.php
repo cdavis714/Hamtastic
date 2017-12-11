@@ -1,7 +1,4 @@
 <?php
-
-// NOT YET FUNCTIONAL
-
  
 define('DB_HOST', 'localhost'); 
 define('DB_NAME', 'hamtastic'); 
@@ -13,7 +10,6 @@ $db=mysql_select_db(DB_NAME,$con) or die("Failed to connect to MySQL: " . mysql_
 
 function AddUser() 
 { 
-//session_start(); 
 //starting the session for user profile page
 if(($_POST['email'] == $_POST['confEmail']) && ($_POST['password'] == $_POST['confPassword']))
 //checking if the user's email and password were correctly entered twice from entry to form in ../hamSignUpYourself.html
@@ -21,29 +17,14 @@ if(($_POST['email'] == $_POST['confEmail']) && ($_POST['password'] == $_POST['co
 	$query1 = mysql_query("INSERT INTO Customer VALUES ('','$_POST[fullName]','$_POST[email]','$_POST[school]')") or die(mysql_error()); 
 	$query2 = "SELECT Customer_ID FROM Customer WHERE Email = '$_POST[email]'";
 	$result = mysql_query($query2) or die();
-	$row = mysql_fetch_object($result);
-	$name = $row -> name;
-//	echo "the C_ID is $result";
-//	echo;
-	print "the C_ID is $name";
-//	$query3 = mysql_query("INSERT INTO Clogin VALUES ('$query2',md5('$_POST[password]')") or die(mysql_error());
-//	header('Location: ../needsFixing.html');
-	
-
-/*	$query = mysql_query("SELECT * FROM Clogin WHERE C_ID = (SELECT Customer_ID FROM Customer WHERE Email = '$_POST[Email]') and Password = md5('$_POST[Password]')") or die(mysql_error()); 
-	$row = mysql_fetch_array($query);
-	if(!empty($row['C_ID']) AND !empty($row['Password'])) 
-	{ 
-		$_SESSION['C_ID'] = $row['Password']; 
-	//if login is successful, then proceed to the authenticated user's home page
-		header('Location: ../needsFixing.html'); 
-	} 
-	else 
-	{ 
-	//if login is unsuccessful, then rediredt back to the login page
-		header('Location: ../hamRetryLogin.html'); 
+	while($row = mysql_fetch_array($result)) {
+//	echo $row['Customer_ID'];
+	$name = $row['Customer_ID'];
+	$query3 = "INSERT INTO Clogin VALUES ('$name',md5('$_POST[password]'))";
+	$result2 = mysql_query($query3) or die();
 	}
-*/ 
+	header('Location: ../hamLogin.html');
+
 }
 else 
 {
