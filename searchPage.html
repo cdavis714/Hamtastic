@@ -292,8 +292,10 @@ a:visited {
 <img src="images/hamtasticlogo.jpg" alt="Logo">
 </td>
 <td>
-	<form method="get" action="/search" id="search">
-  <input name="q" type="text" size="40" placeholder="Search..." />
+<!--	<form method="get" action="/search" id="search">  -->
+  <form method="POST" action="include/search.php" id="search">
+ <input name="athlete" type="text" size="40" placeholder="Search..." /> 
+  <input id="button" type="submit" name="submit" value="Continue"> 
 </form>
 </td>
 </tr>
