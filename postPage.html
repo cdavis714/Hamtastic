@@ -294,9 +294,9 @@ document.getElementById("files").onchange = function () {
 	<br><br>
 <div class="login">
 	<form method="POST" action="include/posting.php" id="postingform">
-		Content: <input type="text" name="postContent">
-		Email: <input type="text" name="Email">
-		<input type="submit">
+  <input type="text" name="email" placeholder="Email" required="required" />
+  <input type="text" name="postContent" placeholder="Content" required="required" />
+  <input id="button" type="submit" name="submit" value="Submit"> 
  	</form>
 	<br>
 <!--	<textarea placeholder="Write your post here...." rows="30" cols="60" name="postContent" form="postingform"></textarea> -->
