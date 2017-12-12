@@ -3,6 +3,12 @@
 
 /*body { margin:400px auto; width:600px;}*/
 
+table, th, td {
+	border: 1px solid black;
+	width:1%;
+	white-space:nowrap;
+}
+
 /* setting button style */
 .btn {
   background: #bfbfbf;
@@ -268,7 +274,36 @@ a:visited {
 <tbody>
 <tr style="height: 120px;">
 	<td style="width: 10%; height: 150px;"><center><img src="images/blankProfilePic.png" alt="Logo"></center></td>
-	<td style="width: 80%; height: 150px;"><center><h3>There are no posts yet</h3></center></td>
+	<td style="width: 80%; height: 150px;"><center>
+
+<?php
+
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'hamtastic');
+define('DB_USER','root');
+define('DB_PASSWORD','hamtastic');
+
+$con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error());
+$db=mysql_select_db(DB_NAME,$con) or die("Failed to connect to MySQL: " . mysql_error());
+
+$query = "SELECT * FROM Posts";
+$result = mysql_query($query) or die();
+$row = mysql_fetch_array($result);
+$cid = $row['C_ID'];
+$query2 = "SELECT Athlete FROM Customer WHERE Customer_ID = '$cid'";
+$result2 = mysql_query($query2) or die();
+$row2 = mysql_fetch_array($result2);
+if ($result->num_rows > 0) {
+echo "<table><tr><th>Athlete</th><th>Date</th><th>Content</th></tr>";
+while($row = $result->fetch_assoc()) {
+echo "<tr><td>" . $row2['Athlete']. "</td><td>" . $row['Date']. "</td><td>" . $row['Content']. "</td></tr>";
+}
+echo "</table>";
+}
+?>
+
+
+</center></td>
 </tr>
 </tbody>
 </table>
