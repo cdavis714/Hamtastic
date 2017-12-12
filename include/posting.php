@@ -323,10 +323,10 @@ function posting()
 	$result = mysql_query($query2) or die();
 	while($row = mysql_fetch_array($result)) {
 //	$row = mysql_fetch_array($result);
-	echo $row['Customer_ID'];
+//	echo $row['Customer_ID'];
 	$name = $row['Customer_ID'];
 	$query3 = "INSERT INTO Posts VALUES ('$name','',CURDATE(),'$_POST[postContent]')";
-//	$result2 = mysql_query($query3) or die();
+	$result2 = mysql_query($query3) or die();
 	echo "Post Successful";
 //	header('Location: ../hamSignUpSuccessful.html');
 	}
