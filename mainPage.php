@@ -286,7 +286,7 @@ $db=mysql_select_db(DB_NAME,$con) or die("Failed to connect to MySQL: " . mysql_
   $result = mysql_query($query) or die();
   $row = mysql_fetch_array($result); 
   echo "<table><tr><th>Customer ID</th><th>Date</th><th>Content</th></tr>";
-  echo "<tr><td>" . $row[C_ID]. "</td><td>" . $row[Date]. "</td><td>" . $row[Content]. "</td></tr>";
+  echo "<tr><td>" . $row["C_ID"]. "</td><td>" . $row["Date"]. "</td><td>" . $row["Content"]. "</td></tr>";
   echo "</table>";
 
 ?>
