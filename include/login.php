@@ -20,7 +20,7 @@ if(!empty($_POST['Email']))
 	{ 
 		$_SESSION['C_ID'] = $row['Password']; 
 	//if login is successful, then proceed to the authenticated user's home page
-		header('Location: ../mainPage.html'); 
+		header('Location: ../mainPage.php'); 
 	} 
 	else 
 	{ 

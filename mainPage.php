@@ -253,7 +253,7 @@ a:visited {
  
 <div class="headerBar">
 <hr>
-&nbsp&nbsp<button class="btn1"><a href="mainPage.html">.</a></button>
+&nbsp&nbsp<button class="btn1"><a href="mainPage.php">.</a></button>
 &nbsp&nbsp<button class="btn2"><a href="postPage.html">.</a></button>
 &nbsp&nbsp<button class="btn3"><a href="searchPage.html">.</a></button>
 &nbsp&nbsp<button class="btn4"><a href="profilePage.html">.</a></button>
@@ -292,20 +292,15 @@ $result3 = mysql_query($query3) or die();
 $query = "SELECT C_ID FROM Posts";
 $result = mysql_query($query) or die();
 echo "<table><tr><th>Athlete</th><th>Date</th><th>Content</th></tr>";
-//while($row3 = mysql_fetch_assoc($result3)) {
 while($row = mysql_fetch_assoc($result)) {
-while($row3 = mysql_fetch_assoc($result3)) {
 $cid = $row['C_ID'];
 $query2 = "SELECT Athlete FROM Customer WHERE Customer_ID = '$cid'";
 $result2 = mysql_query($query2) or die();
 $row2 = mysql_fetch_assoc($result2);
-//while($row3 = mysql_fetch_assoc($result3)) {
+$row3 = mysql_fetch_assoc($result3);
 echo "<tr><td>" . $row2['Athlete']. "</td><td>" . $row3['Date']. "</td><td>" . $row3['Content']. "</td></tr>";
 }
-//}
-
 echo "</table>";
-}
 ?>
 
 
