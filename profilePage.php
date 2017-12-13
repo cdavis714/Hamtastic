@@ -1,7 +1,14 @@
 <html>
 <style>
 
+/* Needs a lot of work */
 /*body { margin:400px auto; width:600px;}*/
+
+table, th, td {
+	border: 1px solid black;
+	width:1%;
+	white-space:nowrap;
+}
 
 /* setting button style */
 .btn {
@@ -277,19 +284,43 @@ a:visited {
 <br>
 <br>
 &nbsp;&nbsp;
-
-<div>
-<form method="POST" action="profilePage.php" id="profile">
-<input type="text" name="athlete" placeholder="Full Name" required="required" />
-<input id="button" type="submit" name="submit" value="Submit"> 
-</form>
-</div>
-
 <table style="width: 100%;" border="1" cellpadding="10">
 <tbody>
 <tr style="height: 150px;">
+<td style="width: 120px; height: 200px; cell-padding:"5px"><center><img src="images/blankProfilePic.png" alt="Logo"></center></td>
 <td style="width: 100px; height: 259px;"><center><button class="btn"><a href="editProfile.html">Edit Profile</a></button></center></td>
-<td style="width: 100%; height: 259px;"><center><h3>This user has not yet entered a bio</h3></center></td>
+<td style="width: 100%; height: 259px;"><center>
+
+<?php
+/*
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'hamtastic');
+define('DB_USER','root');
+define('DB_PASSWORD','hamtastic');
+
+$con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error());
+$db=mysql_select_db(DB_NAME,$con) or die("Failed to connect to MySQL: " . mysql_error());
+
+
+$query3 = "SELECT * FROM Posts";
+$result3 = mysql_query($query3) or die();
+$query = "SELECT C_ID FROM Posts";
+$result = mysql_query($query) or die();
+echo "<table><tr><th>Athlete</th><th>Date</th><th>Content</th></tr>";
+while($row = mysql_fetch_assoc($result)) {
+$cid = $row['C_ID'];
+$query2 = "SELECT Athlete FROM Customer WHERE Customer_ID = '$cid'";
+$result2 = mysql_query($query2) or die();
+$row2 = mysql_fetch_assoc($result2);
+$row3 = mysql_fetch_assoc($result3);
+echo "<tr><td>" . $row2['Athlete']. "</td><td>" . $row3['Date']. "</td><td>" . $row3['Content']. "</td></tr>";
+}
+echo "</table>";
+*/
+?>
+
+
+</center></td>
 </tr>
 </tbody>
 </table>
@@ -298,7 +329,39 @@ a:visited {
 <tbody>
 <tr style="height: 120px;">
 	<td style="width: 10%; height: 150px;"><center><img src="images/blankProfilePic.png" alt="Logo"></center></td>
-	<td style="width: 80%; height: 150px;"><center><h3>This user has not made a post yet</h3></center></td>
+	<td style="width: 80%; height: 150px;"><center><h3>
+
+
+<?php
+/*
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'hamtastic');
+define('DB_USER','root');
+define('DB_PASSWORD','hamtastic');
+
+$con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error());
+$db=mysql_select_db(DB_NAME,$con) or die("Failed to connect to MySQL: " . mysql_error());
+
+
+$query3 = "SELECT * FROM Posts WHERE Athlete = '$_POST[athlete]'";
+$result3 = mysql_query($query3) or die();
+$query = "SELECT C_ID FROM Posts WHERE Athlete = '$_POST[athlete]'";
+$result = mysql_query($query) or die();
+echo "<table><tr><th>Athlete</th><th>Date</th><th>Content</th></tr>";
+while($row = mysql_fetch_assoc($result)) {
+$cid = $row['C_ID'];
+$query2 = "SELECT Athlete FROM Customer WHERE Customer_ID = '$cid'";
+$result2 = mysql_query($query2) or die();
+$row2 = mysql_fetch_assoc($result2);
+$row3 = mysql_fetch_assoc($result3);
+echo "<tr><td>" . $row2['Athlete']. "</td><td>" . $row3['Date']. "</td><td>" . $row3['Content']. "</td></tr>";
+}
+echo "</table>";
+*/
+?>
+
+
+</center></td>
 </tr>
 </tbody>
 </table>
