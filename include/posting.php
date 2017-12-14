@@ -301,7 +301,6 @@ a:visited {
 
 <?php
 
-//Not yet functional!
  
 define('DB_HOST', 'localhost'); 
 define('DB_NAME', 'hamtastic'); 

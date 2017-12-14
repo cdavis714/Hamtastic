@@ -4,7 +4,7 @@
 /*body { margin:400px auto; width:600px;}*/
 
 table, th, td {
-	border: 1px solid black;
+	border: 1px solid purple;
 	width:1%;
 	white-space:nowrap;
 }
@@ -273,7 +273,7 @@ a:visited {
 	<table style="width: 100%;" border="1" cellpadding="10">
 <tbody>
 <tr style="height: 120px;">
-	<td style="width: 10%; height: 150px;"><center><img src="images/blankProfilePic.png" alt="Logo"></center></td>
+	<td style="width: 10%; height: 150px;"><center><img src="images/hamtasticlogo.jpg" alt="Logo"></center></td>
 	<td style="width: 80%; height: 150px;"><center>
 
 <?php
