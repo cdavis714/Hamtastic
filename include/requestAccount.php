@@ -1,51 +1,30 @@
 <?php
- 
-define('DB_HOST', 'localhost'); 
-define('DB_NAME', 'hamtastic'); 
-define('DB_USER','root'); 
-define('DB_PASSWORD','hamtastic'); 
-
-$con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error()); 
-$db=mysql_select_db(DB_NAME,$con) or die("Failed to connect to MySQL: " . mysql_error()); 
 
 function requestAccount() 
 { 
-//starting the session for user profile page
 if(($_POST['email'] == $_POST['confEmail']))
 //checking if the user's email was correctly entered twice from entry to form 
 { 
 
- $to = "connordavis714@gmail.com";
- $subject = "Requesting Hamtastic account for $_POST[fullName]"};
- $body = "email: $_POST[email]\nCompany or School: $_POST[companyorSchool]\n";
- if (mail($to, $subject, $body)) {
- echo("<p>Email successfully sent!</p>");
- } else {
- echo("<p>Email delivery failed…</p>");
- }
+$athlete = $_POST['fullName'];
+$emailAddr = $_POST['email'];
+$company = $_POST['companyorSchool'];
+$reason = $_POST['reasonText'];
 
-
-
-/*
-	$query1 = mysql_query("INSERT INTO Customer VALUES ('','$_POST[fullName]','$_POST[email]','$_POST[school]')") or die(mysql_error()); 
-	$query2 = "SELECT Customer_ID FROM Customer WHERE Email = '$_POST[email]'";
-	$result = mysql_query($query2) or die();
-	while($row = mysql_fetch_array($result)) {
-//	echo $row['Customer_ID'];
-	$name = $row['Customer_ID'];
-	$query3 = "INSERT INTO Clogin VALUES ('$name',md5('$_POST[password]'))";
-	$result2 = mysql_query($query3) or die();
-	}
-	header('Location: ../hamSignUpSuccessful.html');
-
+$to = "cdavis46@students.towson.edu";
+$subject = "Requesting Hamtastic account for $athlete";
+$body = "Email: $emailAddr \nCompany or School: $company\nReason for needing account: $reason\n";
+//$headers = "From: $emailAddr";
+$headers = "From: accounts@hamtastic.net";
+mail($to,$subject,$body,$headers);
+//echo "Request for $athlete successfully sent!";
+header('Location: ../requestSubmittedHome.html');
 }
-else 
-{
-	header('Location: ../signUpYourselfRetry.html'); 
+else {
+header('Location: ../requestFailed.html');
 }
 
-*/
-} 
+}
 
 if(isset($_POST['submit'])) 
 { 
