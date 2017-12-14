@@ -164,13 +164,11 @@ input[type="checkbox"]:checked + label:before {
 	<br><br><br><br><br><br><br><br>
 <div class="login">
 	<h1>Sign Up</h1>
-    <form method="post">
+    <form method="POST" action="include/requestAccount.php">
     	<input type="text" name="email" placeholder="Email" required="required" />
     	<input type="text" name="confEmail" placeholder="Confirm Email" required="required" />
-    	<input type="text" name="firstName" placeholder="First Name" required="required" />
-    	<input type="text" name="lastName" placeholder="Last Name" required="required" />
+    	<input type="text" name="fullName" placeholder="First Name" required="required" />
     	<input type="text" name="companyorSchool" placeholder="Company or School" required="required" />
-    	<input type="tel" name="telephone" placeholder="Phone Number" required="required" />
     	<textarea placeholder="Please enter your reason for requesting an account." rows="4" cols="40"></textarea> 
 			</textarea>
 			<br><br>
@@ -181,7 +179,7 @@ input[type="checkbox"]:checked + label:before {
   	</center>
   		<br><br>
         <center><button class="btn1"><a class="a1" href="hamSignUp1.html">Back</a></button>&nbsp&nbsp&nbsp
-        <button class="btn1"><a class="a1" href="needsFixing.html">Continue</a></button>
+        <input id="button" type="submit" name="submit" value="Continue"> 
 			</center>
     </form>
 
