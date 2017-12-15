@@ -312,23 +312,20 @@ function search()
 { 
 	$query = "SELECT * FROM Customer WHERE Athlete = '$_POST[athlete]'"; 
 	$result = mysql_query($query) or die();
-	echo "<table><tr><th>Athlete</th><th>Email</th><th>School</th></tr>";
-	while($row = mysql_fetch_assoc($result)) {
+	$row = mysql_fetch_array($result);
 	if (!empty($row['Customer_ID'])) {
-	//	echo "<table><tr><th>Athlete</th><th>Email</th><th>School</th></tr>";
+		echo "<table><tr><th>Athlete</th><th>Email</th><th>School</th></tr>";
 		$name = $row['Athlete'];
 		$email = $row['Email'];
 		$school = $row['School_name'];
 //		echo "$name $email $school";
 		echo "<tr><td>" . $name. "</td><td>" . $email. "</td><td>" . $school. "</td></tr>";
-//		echo "</table>";
+		echo "</table>";
 	}
 	else {
 		echo "No results found!";
 		exit;
 	}
-	}
-		echo "</table>";
 }
 if(isset($_POST['submit'])) 
 { 

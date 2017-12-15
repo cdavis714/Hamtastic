@@ -17,11 +17,13 @@ function editProfile()
 //if(($_POST['email'] == $_POST['confEmail']) && ($_POST['password'] == $_POST['confPassword']))
 //checking if the user's email and password were correctly entered twice from entry to form in ../hamSignUpYourself.html
 //{ 
+
 	$query2 = "SELECT Customer_ID FROM Customer WHERE Email = '$_POST[email]'";
 	$result = mysql_query($query2) or die();
 	while($row = mysql_fetch_array($result)) {
 //	echo $row['Customer_ID'];
 	$name = $row['Customer_ID'];
+	$query = mysql_query("DELETE FROM Profile WHERE C_ID = '$name'");
 	$query3 = "INSERT INTO Profile VALUES ('$name','$_POST[bio]','$_POST[files]')";
 	$result2 = mysql_query($query3) or die();
 	}

@@ -5,7 +5,7 @@
 /*body { margin:400px auto; width:600px;}*/
 
 table, th, td {
-	border: 1px solid black;
+	border: 1px solid purple;
 	width:1%;
 	white-space:nowrap;
 }
@@ -315,15 +315,18 @@ $row6 = mysql_fetch_array($result6);
 
 $profPic = $row6['Picture'];
 
-//<img src="$profPic" alt="Logo">;
-
+//echo "<img src=". $profPic. " alt='Logo'>";
+//echo '<img src="data:image/png;base64,'.base64_encode( $profPic] ).'"/>';
+//echo '<img src="'.$profPic.'" alt="HTML5 Icon" style="width:128px;height:128px">';
+//echo "$profPic";
+//echo "$row6[Picture]";
 
 ?>
 
 
 </center></td>
 <td style="width: 100px; height: 259px;"><center><button class="btn"><a href="editProfile.html">Edit Profile</a></button></center></td>
-<td style="width: 100%; height: 259px;"><center>
+<td style="width: 100%; height: 259px;"><center><h4>User Bio</h4>
 
 <?php
 
@@ -351,7 +354,7 @@ $row1 = mysql_fetch_array($result1);
 
 $bioContent = $row1['Bio'];
 
-echo "Bio: $bioContent";
+echo "$bioContent";
 
 
 ?>
