@@ -1,8 +1,16 @@
 <html>
 <style>
 
+/* Needs a lot of work */
 /*body { margin:400px auto; width:600px;}*/
 
+table, th, td {
+	border: 1px solid black;
+	width:1%;
+	white-space:nowrap;
+}
+
+/* setting button style */
 .btn {
   background: #bfbfbf;
   background-image: -webkit-linear-gradient(top, #bfbfbf, #dedede);
@@ -20,12 +28,13 @@
   color: #403c40;
   font-size: 18px;
   /*padding: 11px 40px 11px 40px;*/
-  width: 100%;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   border: solid #a1a1a1 .1px;
   text-decoration: none;
 }
 
+/* setting button style */
 .btn1 {
   background: #bfbfbf;
   background-color: rgba(255, 5, 50, .5);
@@ -53,6 +62,7 @@
   text-decoration: none;
 }
 
+/* setting button style */
 .btn2 {
   background: #bfbfbf;
   background-color: rgba(255, 5, 50, .5);
@@ -80,6 +90,7 @@
   text-decoration: none;
 }
 
+/* setting button style */
 .btn3 {
   background: #bfbfbf;
   background-color: rgba(255, 5, 50, .5);
@@ -185,9 +196,15 @@
   text-decoration: none;
   position:relative;
 }
-td
-{
-    padding:100px 200px 100px 50px;
+
+h3 {
+	
+	font-family: Arial;
+  color: #403c40;
+  font-size: 18px;
+  width: 100%;
+  height: 40px;
+	
 }
 
 .headerBar {
@@ -241,9 +258,7 @@ a:visited {
     display:block;
 }
 
-.image1{
-	background: url(images/defaultPicture.png) no-repeat;
-}
+	
 
 </style>
 
@@ -266,56 +281,59 @@ a:visited {
 <body>
 	<br>
 	<br>
-	
-	<center><table>
-	<tr>
-	<td>
-		<br>
-		<br>
-		<br>
-		<br>
-		
-<img src="images/hamtasticlogo.jpg" alt="Logo">
-</td>
-<td>
-	<br><br><br><br>
-<div class="login">
-	<h1>Edit Profile</h1>
-    <form method="post" action="include/edit.php" id="editForm" name="editForm">
-    	<input type="text" name="email" placeholder="Confirm Email"/>
-    	<input type="file" id="files" name="files" />
-<center><img class="image1" id="image1" height="300px" width="300px"/></center>
-<script>
-document.getElementById("files").onchange = function () {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-        // get loaded data and render thumbnail.
-        document.getElementById("image1").src = e.target.result;
-    };
-
-    // read the image file as a data URL.
-    reader.readAsDataURL(this.files[0]);
-};
-</script>
-    	
-        
-        <br><center>
-
-	<textarea placeholder="Edit your bio...." rows="5" cols="40" name="bio" id="bio" form="editForm"></textarea> 
-			</textarea>
-		<br>
-		<br>
-			</center>
-       <input id="button" type="submit" name="submit" value="Submit">  
-			</center>
-			
-    </form>
-</div>
-</td>
+<br>
+<br>
+&nbsp;&nbsp;
+<table style="width: 100%;" border="1" cellpadding="10">
+<tbody>
+<tr style="height: 150px;">
+<td style="width: 120px; height: 200px; cell-padding:"5px"><center><img src="images/blankProfilePic.png" alt="Logo"></center></td>
+<td style="width: 100px; height: 259px;"><center><button class="btn"><a href="editProfile.html">Edit Profile</a></button></center></td>
+<td style="width: 100%; height: 259px;"><center>
+</center></td>
 </tr>
+</tbody>
 </table>
-</center>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br>
+<table style="width: 100%;" border="1" cellpadding="10">
+<tbody>
+<tr style="height: 120px;">
+	<td style="width: 10%; height: 150px;"><center><img src="images/blankProfilePic.png" alt="Logo"></center></td>
+	<td style="width: 80%; height: 150px;"><center>
+
+
+<?php
+
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'hamtastic');
+define('DB_USER','root');
+define('DB_PASSWORD','hamtastic');
+
+$con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error());
+$db=mysql_select_db(DB_NAME,$con) or die("Failed to connect to MySQL: " . mysql_error());
+
+
+$query3 = "SELECT * FROM Posts";
+$result3 = mysql_query($query3) or die();
+$query = "SELECT C_ID FROM Posts";
+$result = mysql_query($query) or die();
+echo "<table><tr><th>Athlete</th><th>Date</th><th>Content</th></tr>";
+while($row = mysql_fetch_assoc($result)) {
+$cid = $row['C_ID'];
+$query2 = "SELECT Athlete FROM Customer WHERE Customer_ID = '$cid'";
+$result2 = mysql_query($query2) or die();
+$row2 = mysql_fetch_assoc($result2);
+$row3 = mysql_fetch_assoc($result3);
+echo "<tr><td>" . $row2['Athlete']. "</td><td>" . $row3['Date']. "</td><td>" . $row3['Content']. "</td></tr>";
+}
+echo "</table>";
+
+?>
+
+
+</center></td>
+</tr>
+</tbody>
+</table>
 </body>
 </html>

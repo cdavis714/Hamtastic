@@ -287,12 +287,11 @@ a:visited {
 <table style="width: 100%;" border="1" cellpadding="10">
 <tbody>
 <tr style="height: 150px;">
-<td style="width: 120px; height: 200px; cell-padding:"5px"><center><img src="images/blankProfilePic.png" alt="Logo"></center></td>
-<td style="width: 100px; height: 259px;"><center><button class="btn"><a href="editProfile.html">Edit Profile</a></button></center></td>
-<td style="width: 100%; height: 259px;"><center>
+<td style="width: 120px; height: 200px; cell-padding:"5px"><center>
+
 
 <?php
-/*
+
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'hamtastic');
 define('DB_USER','root');
@@ -301,23 +300,63 @@ define('DB_PASSWORD','hamtastic');
 $con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error());
 $db=mysql_select_db(DB_NAME,$con) or die("Failed to connect to MySQL: " . mysql_error());
 
+$athleteName2 = $_POST['athlete'];
 
-$query3 = "SELECT * FROM Posts";
-$result3 = mysql_query($query3) or die();
-$query = "SELECT C_ID FROM Posts";
-$result = mysql_query($query) or die();
-echo "<table><tr><th>Athlete</th><th>Date</th><th>Content</th></tr>";
-while($row = mysql_fetch_assoc($result)) {
-$cid = $row['C_ID'];
-$query2 = "SELECT Athlete FROM Customer WHERE Customer_ID = '$cid'";
-$result2 = mysql_query($query2) or die();
-$row2 = mysql_fetch_assoc($result2);
-$row3 = mysql_fetch_assoc($result3);
-echo "<tr><td>" . $row2['Athlete']. "</td><td>" . $row3['Date']. "</td><td>" . $row3['Content']. "</td></tr>";
-}
-echo "</table>";
-*/
+
+$query5 = "SELECT Customer_ID FROM Customer WHERE Athlete = '$athleteName2'";
+$result5 = mysql_query($query5) or die();
+$row5 = mysql_fetch_array($result5);
+$cid5 = $row5['Customer_ID'];
+$query6 = "SELECT * FROM Profile WHERE C_ID = '$cid5'";
+$result6 = mysql_query($query6) or die();
+$row6 = mysql_fetch_array($result6);
+//echo "<tr><td>" . $athleteName1. "</td><tr>"; . $row1['Bio']. "</td><tr>";
+//echo "</table>";
+
+$profPic = $row6['Picture'];
+
+//<img src="$profPic" alt="Logo">;
+
+
 ?>
+
+
+</center></td>
+<td style="width: 100px; height: 259px;"><center><button class="btn"><a href="editProfile.html">Edit Profile</a></button></center></td>
+<td style="width: 100%; height: 259px;"><center>
+
+<?php
+
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'hamtastic');
+define('DB_USER','root');
+define('DB_PASSWORD','hamtastic');
+
+$con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error());
+$db=mysql_select_db(DB_NAME,$con) or die("Failed to connect to MySQL: " . mysql_error());
+
+$athleteName1 = $_POST['athlete'];
+
+
+//echo "<table><tr><th>Bio</th></tr>";
+$query = "SELECT Customer_ID FROM Customer WHERE Athlete = '$athleteName1'";
+$result = mysql_query($query) or die();
+$row = mysql_fetch_array($result);
+$cid1 = $row['Customer_ID'];
+$query1 = "SELECT * FROM Profile WHERE C_ID = '$cid1'";
+$result1 = mysql_query($query1) or die();
+$row1 = mysql_fetch_array($result1);
+//echo "<tr><td>" . $athleteName1. "</td><tr>"; . $row1['Bio']. "</td><tr>";
+//echo "</table>";
+
+$bioContent = $row1['Bio'];
+
+echo "Bio: $bioContent";
+
+
+?>
+
+
 
 
 </center></td>
@@ -329,11 +368,11 @@ echo "</table>";
 <tbody>
 <tr style="height: 120px;">
 	<td style="width: 10%; height: 150px;"><center><img src="images/blankProfilePic.png" alt="Logo"></center></td>
-	<td style="width: 80%; height: 150px;"><center><h3>
+	<td style="width: 80%; height: 150px;"><center>
 
 
 <?php
-/*
+
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'hamtastic');
 define('DB_USER','root');
@@ -342,22 +381,20 @@ define('DB_PASSWORD','hamtastic');
 $con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error());
 $db=mysql_select_db(DB_NAME,$con) or die("Failed to connect to MySQL: " . mysql_error());
 
+$athleteName = $_POST['athlete'];
 
-$query3 = "SELECT * FROM Posts WHERE Athlete = '$_POST[athlete]'";
-$result3 = mysql_query($query3) or die();
-$query = "SELECT C_ID FROM Posts WHERE Athlete = '$_POST[athlete]'";
-$result = mysql_query($query) or die();
 echo "<table><tr><th>Athlete</th><th>Date</th><th>Content</th></tr>";
-while($row = mysql_fetch_assoc($result)) {
-$cid = $row['C_ID'];
-$query2 = "SELECT Athlete FROM Customer WHERE Customer_ID = '$cid'";
+$query2 = "SELECT Customer_ID FROM Customer WHERE Athlete = '$athleteName'";
 $result2 = mysql_query($query2) or die();
-$row2 = mysql_fetch_assoc($result2);
-$row3 = mysql_fetch_assoc($result3);
-echo "<tr><td>" . $row2['Athlete']. "</td><td>" . $row3['Date']. "</td><td>" . $row3['Content']. "</td></tr>";
+$row2 = mysql_fetch_array($result2);
+$cid = $row2['Customer_ID'];
+$query3 = "SELECT * FROM Posts WHERE C_ID = '$cid'";
+$result3 = mysql_query($query3) or die();
+while($row3 = mysql_fetch_assoc($result3)) {
+echo "<tr><td>" . $athleteName. "</td><td>" . $row3['Date']. "</td><td>" . $row3['Content']. "</td></tr>";
 }
 echo "</table>";
-*/
+
 ?>
 
 
@@ -365,6 +402,5 @@ echo "</table>";
 </tr>
 </tbody>
 </table>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
